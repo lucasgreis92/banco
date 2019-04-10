@@ -1,0 +1,12 @@
+{
+  "realm": "master",
+  "auth-server-url": "http://ec2-54-202-0-205.us-west-2.compute.amazonaws.com:8080/auth",
+  "ssl-required": "none",
+  "resource": "my-app",
+  "verify-token-audience": true,
+  "credentials": {
+    "secret": "510b5325-24e4-475c-924b-22d03f35bdc7"
+  },
+  "confidential-port": 0,
+  "policy-enforcer": {}
+}
