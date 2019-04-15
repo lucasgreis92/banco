@@ -5,6 +5,7 @@
  */
 package br.com.lgrapp.banco.service;
 
+import br.com.lgrapp.banco.base.crud.AbstractEntity;
 import br.com.lgrapp.banco.base.crud.interfaces.ICrud;
 import java.util.List;
 
@@ -20,6 +21,10 @@ public abstract class AbstractService<T> {
 
     public void edit(T entity) {
         getCrud().edit(entity);
+    }
+    
+    public void save(T entity) {
+        getCrud().save(entity);
     }
 
     public void remove(Object id) {
@@ -41,6 +46,7 @@ public abstract class AbstractService<T> {
     public int count() {
         return getCrud().count();
     }
+    
 
     public abstract ICrud getCrud();
 

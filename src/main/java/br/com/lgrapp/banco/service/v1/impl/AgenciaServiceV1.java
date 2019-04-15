@@ -24,10 +24,10 @@ public class AgenciaServiceV1 extends AbstractService<Agencia> implements IAgenc
 
     @Inject
     @Named("AgenciaDAOV1")
-    IAgenciaDAOV1 agenciaDAOV1;
+    private IAgenciaDAOV1 agenciaDAOV1;
 
     @Override
-    public ICrud getCrud() {
+    public IAgenciaDAOV1 getCrud() {
         return agenciaDAOV1;
     }
 

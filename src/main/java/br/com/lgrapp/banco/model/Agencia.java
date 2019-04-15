@@ -5,6 +5,7 @@
  */
 package br.com.lgrapp.banco.model;
 
+import br.com.lgrapp.banco.base.crud.AbstractEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -34,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Agencia.findAll", query = "SELECT a FROM Agencia a")
     , @NamedQuery(name = "Agencia.findByIdAgencia", query = "SELECT a FROM Agencia a WHERE a.idAgencia = :idAgencia")
     , @NamedQuery(name = "Agencia.findByDsAgencia", query = "SELECT a FROM Agencia a WHERE a.dsAgencia = :dsAgencia")})
-public class Agencia implements Serializable {
+public class Agencia extends AbstractEntity<Integer> implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,7 +49,6 @@ public class Agencia implements Serializable {
     @Column(name = "ds_agencia")
     private String dsAgencia;
 
-
     public Agencia() {
     }
 
@@ -59,6 +59,11 @@ public class Agencia implements Serializable {
     public Agencia(Integer idAgencia, String dsAgencia) {
         this.idAgencia = idAgencia;
         this.dsAgencia = dsAgencia;
+    }
+
+    @Override
+    public Integer getId() {
+        return idAgencia;
     }
 
     public Integer getIdAgencia() {
@@ -101,5 +106,5 @@ public class Agencia implements Serializable {
     public String toString() {
         return "br.com.lgrapp.banco.model.Agencia[ idAgencia=" + idAgencia + " ]";
     }
-    
+
 }

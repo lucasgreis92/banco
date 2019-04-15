@@ -6,10 +6,10 @@
 package br.com.lgrapp.banco.dao.v1.impl;
 
 import br.com.lgrapp.banco.dao.AbstractDAO;
-import br.com.lgrapp.banco.dao.v1.custom.IContaEntradaV1;
 import br.com.lgrapp.banco.model.ContaEntrada;
 import javax.ejb.Stateless;
 import javax.inject.Named;
+import br.com.lgrapp.banco.dao.v1.custom.IContaEntradaDAOV1;
 
 /**
  *
@@ -17,7 +17,7 @@ import javax.inject.Named;
  */
 @Stateless
 @Named("ContaEntradaDAOV1")
-public class ContaEntradaDAOV1 extends AbstractDAO<ContaEntrada> implements IContaEntradaV1 {
+public class ContaEntradaDAOV1 extends AbstractDAO<ContaEntrada> implements IContaEntradaDAOV1 {
 
     public ContaEntradaDAOV1() {
         super(ContaEntrada.class);

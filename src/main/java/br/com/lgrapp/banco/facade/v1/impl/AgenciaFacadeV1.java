@@ -8,7 +8,6 @@ package br.com.lgrapp.banco.facade.v1.impl;
 import br.com.lgrapp.banco.dto.v1.AgenciaDTOV1;
 import br.com.lgrapp.banco.facade.AbstractFacade;
 import br.com.lgrapp.banco.facade.v1.custom.IAgenciaFacadeV1;
-import br.com.lgrapp.banco.mappers.AbstractMapper;
 import br.com.lgrapp.banco.mappers.v1.AgenciaMapperV1;
 import br.com.lgrapp.banco.model.Agencia;
 import br.com.lgrapp.banco.service.v1.custom.IAgenciaServiceV1;
@@ -26,11 +25,10 @@ public class AgenciaFacadeV1 extends AbstractFacade<Agencia, AgenciaDTOV1> imple
 
     @Inject
     @Named("AgenciaServiceV1")
-    IAgenciaServiceV1 agenciaServiceV1;
+    private IAgenciaServiceV1 agenciaServiceV1;
 
     @Inject
-    @Named("AgenciaMapperV1")
-    AgenciaMapperV1 agenciaMapperV1;
+    private AgenciaMapperV1 agenciaMapperV1;
 
     @Override
     public IAgenciaServiceV1 getCrud() {
@@ -38,7 +36,7 @@ public class AgenciaFacadeV1 extends AbstractFacade<Agencia, AgenciaDTOV1> imple
     }
 
     @Override
-    public AbstractMapper<Agencia, AgenciaDTOV1> getMapper() {
+    public AgenciaMapperV1 getMapper() {
         return agenciaMapperV1;
     }
 

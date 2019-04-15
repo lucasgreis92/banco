@@ -6,15 +6,12 @@
 package br.com.lgrapp.banco.facade.v1.custom;
 
 import br.com.lgrapp.banco.base.crud.interfaces.ICrud;
-import br.com.lgrapp.banco.dto.v1.ContaDTOV1;
+import br.com.lgrapp.banco.dto.v1.ContaEntradaDTOV1;
 
 /**
  *
  * @author adm
  */
-public interface IContaFacadeV1 extends ICrud<ContaDTOV1> {
-
-    void savePessoaFisica(ContaDTOV1 dto);
-
-    void savePessoaJuridica(ContaDTOV1 dto);
+public interface IContaEntradaFacadeV1 extends ICrud<ContaEntradaDTOV1>{
+    
 }

@@ -5,8 +5,8 @@
  */
 package br.com.lgrapp.banco.controller.v1;
 
-import br.com.lgrapp.banco.dto.v1.ContaDTOV1;
-import br.com.lgrapp.banco.facade.v1.custom.IContaFacadeV1;
+import br.com.lgrapp.banco.dto.v1.PessoaJuridicaDTOV1;
+import br.com.lgrapp.banco.facade.v1.custom.IPessoaJuridicaFacadeV1;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -22,35 +22,27 @@ import javax.ws.rs.core.MediaType;
  *
  * @author adm
  */
-@Path("v1/conta")
+@Path("v1/pessoajuridica")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ContaControllerV1 {
+public class PessoaJuridicaControllerV1 {
 
     @Inject
-    @Named("ContaFacadeV1")
-    private IContaFacadeV1 contaFacadeV1;
-
+    @Named("PessoaJuridicaFacadeV1")
+    private IPessoaJuridicaFacadeV1 pessoaJuridicaFacadeV1;
+    
     @GET
-    public List<ContaDTOV1> findAll() {
-        return contaFacadeV1.findAll();
+    public List<PessoaJuridicaDTOV1> findAll(){
+        return pessoaJuridicaFacadeV1.findAll();
     }
-
+    
     @POST
-    @Path("pessoafisica")
-    public void createPessoaFisica(ContaDTOV1 dto) {
-        contaFacadeV1.savePessoaFisica(dto);
+    public void save(PessoaJuridicaDTOV1 dto){
+        pessoaJuridicaFacadeV1.save(dto);
     }
-
-    @POST
-    @Path("pessoajuridica")
-    public void createPessoaJuridica(ContaDTOV1 dto) {
-        contaFacadeV1.savePessoaJuridica(dto);
-    }
-
+    
     @DELETE
-    public void inativate(Integer contaId) {
-        contaFacadeV1.remove(contaId);
+    public void delete(PessoaJuridicaDTOV1 dto){
+        pessoaJuridicaFacadeV1.remove(dto);
     }
-
 }

@@ -5,6 +5,7 @@
  */
 package br.com.lgrapp.banco.model;
 
+import br.com.lgrapp.banco.base.crud.AbstractEntity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Basic;
@@ -30,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ContaSaida.findAll", query = "SELECT c FROM ContaSaida c")
     , @NamedQuery(name = "ContaSaida.findByIdContaSaida", query = "SELECT c FROM ContaSaida c WHERE c.idContaSaida = :idContaSaida")
     , @NamedQuery(name = "ContaSaida.findByVrOperacao", query = "SELECT c FROM ContaSaida c WHERE c.vrOperacao = :vrOperacao")})
-public class ContaSaida implements Serializable {
+public class ContaSaida extends AbstractEntity<Integer> implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,6 +58,11 @@ public class ContaSaida implements Serializable {
     public ContaSaida(Integer idContaSaida, BigDecimal vrOperacao) {
         this.idContaSaida = idContaSaida;
         this.vrOperacao = vrOperacao;
+    }
+
+    @Override
+    public Integer getId() {
+        return idContaSaida;
     }
 
     public Integer getIdContaSaida() {
@@ -107,5 +113,5 @@ public class ContaSaida implements Serializable {
     public String toString() {
         return "br.com.lgrapp.banco.model.ContaSaida[ idContaSaida=" + idContaSaida + " ]";
     }
-    
+
 }

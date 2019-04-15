@@ -6,26 +6,43 @@
 package br.com.lgrapp.banco.dto.v1;
 
 import br.com.lgrapp.banco.dto.AbstractDTO;
+import br.com.lgrapp.banco.enuns.TipoPessoaEnum;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  *
  * @author adm
  */
-public class ContaDTOV1 extends AbstractDTO{
+public class ContaDTOV1 extends AbstractDTO<Integer> {
 
-    private String nrConta;
+    private Integer idConta;
+    private Integer idAgencia;
     private String dsAgencia;
+    private Integer idPessoa;
     private String dsPessoa;
     private String dsCpfCnpj;
     private BigDecimal vrSaldo;
+    private Date dtAbertura;
+    private Date dtFechamento;
 
-    public String getNrConta() {
-        return nrConta;
+    private TipoPessoaEnum tipoPessoa;
+
+    @Override
+    public Integer getId() {
+        return idConta;
     }
 
-    public void setNrConta(String nrConta) {
-        this.nrConta = nrConta;
+    public Integer getIdConta() {
+        return idConta;
+    }
+
+    public void setIdConta(Integer idConta) {
+        this.idConta = idConta;
+    }
+
+    public String getNrConta() {
+        return idPessoa + "-" + idAgencia;
     }
 
     public String getDsAgencia() {
@@ -58,6 +75,46 @@ public class ContaDTOV1 extends AbstractDTO{
 
     public void setVrSaldo(BigDecimal vrSaldo) {
         this.vrSaldo = vrSaldo;
+    }
+
+    public Date getDtAbertura() {
+        return dtAbertura;
+    }
+
+    public void setDtAbertura(Date dtAbertura) {
+        this.dtAbertura = dtAbertura;
+    }
+
+    public Date getDtFechamento() {
+        return dtFechamento;
+    }
+
+    public void setDtFechamento(Date dtFechamento) {
+        this.dtFechamento = dtFechamento;
+    }
+
+    public Integer getIdPessoa() {
+        return idPessoa;
+    }
+
+    public void setIdPessoa(Integer idPessoa) {
+        this.idPessoa = idPessoa;
+    }
+
+    public TipoPessoaEnum getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    public void setTipoPessoa(TipoPessoaEnum tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
+    }
+
+    public Integer getIdAgencia() {
+        return idAgencia;
+    }
+
+    public void setIdAgencia(Integer idAgencia) {
+        this.idAgencia = idAgencia;
     }
 
 }

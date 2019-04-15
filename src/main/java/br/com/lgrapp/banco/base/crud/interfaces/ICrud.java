@@ -5,6 +5,7 @@
  */
 package br.com.lgrapp.banco.base.crud.interfaces;
 
+import br.com.lgrapp.banco.base.crud.AbstractEntity;
 import java.util.List;
 
 /**
@@ -26,4 +27,6 @@ public interface ICrud<T> {
     public List<T> findRange(int first, int max);
 
     public int count();
+    
+    public void save(T entity);
 }

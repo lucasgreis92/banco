@@ -5,6 +5,7 @@
  */
 package br.com.lgrapp.banco.dao;
 
+import br.com.lgrapp.banco.base.crud.AbstractEntity;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,10 +31,20 @@ public abstract class AbstractDAO<T> {
 
     public void create(T entity) {
         getEntityManager().persist(entity);
+        getEntityManager().flush();
     }
 
     public void edit(T entity) {
         getEntityManager().merge(entity);
+        getEntityManager().flush();
+    }
+
+    public void save(T entity) {
+        if (((AbstractEntity) entity).getId() == null) {
+            getEntityManager().persist(entity);
+        } else {
+            getEntityManager().merge(entity);
+        }
     }
 
     public void remove(Object id) {

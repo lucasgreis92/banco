@@ -5,6 +5,7 @@
  */
 package br.com.lgrapp.banco.mappers;
 
+import br.com.lgrapp.banco.base.crud.AbstractEntity;
 import br.com.lgrapp.banco.dto.AbstractDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author adm
  */
-public abstract class AbstractMapper<T, S extends AbstractDTO> {
+public abstract class AbstractMapper<T extends AbstractEntity, S extends AbstractDTO> {
 
     public abstract S convertToDto(T model);
 

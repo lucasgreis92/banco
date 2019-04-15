@@ -5,6 +5,7 @@
  */
 package br.com.lgrapp.banco.model;
 
+import br.com.lgrapp.banco.base.crud.AbstractEntity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -41,7 +42,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Conta.findByVrSaldo", query = "SELECT c FROM Conta c WHERE c.vrSaldo = :vrSaldo")
     , @NamedQuery(name = "Conta.findByDtAbertura", query = "SELECT c FROM Conta c WHERE c.dtAbertura = :dtAbertura")
     , @NamedQuery(name = "Conta.findByDtFechamento", query = "SELECT c FROM Conta c WHERE c.dtFechamento = :dtFechamento")})
-public class Conta implements Serializable {
+public class Conta extends AbstractEntity<Integer> implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -69,10 +70,6 @@ public class Conta implements Serializable {
     @JoinColumn(name = "id_pessoa_juridica", referencedColumnName = "id_pessoa_juridica")
     @ManyToOne(optional = false)
     private PessoaJuridica idPessoaJuridica;
-    @OneToMany(mappedBy = "idConta")
-    private Collection<ContaEntrada> contaEntradaCollection;
-    @OneToMany(mappedBy = "idConta")
-    private Collection<ContaSaida> contaSaidaCollection;
 
     public Conta() {
     }
@@ -84,6 +81,11 @@ public class Conta implements Serializable {
     public Conta(Integer idConta, Date dtAbertura) {
         this.idConta = idConta;
         this.dtAbertura = dtAbertura;
+    }
+
+    @Override
+    public Integer getId() {
+        return idConta;
     }
 
     public Integer getIdConta() {
@@ -142,24 +144,6 @@ public class Conta implements Serializable {
         this.idPessoaJuridica = idPessoaJuridica;
     }
 
-    @XmlTransient
-    public Collection<ContaEntrada> getContaEntradaCollection() {
-        return contaEntradaCollection;
-    }
-
-    public void setContaEntradaCollection(Collection<ContaEntrada> contaEntradaCollection) {
-        this.contaEntradaCollection = contaEntradaCollection;
-    }
-
-    @XmlTransient
-    public Collection<ContaSaida> getContaSaidaCollection() {
-        return contaSaidaCollection;
-    }
-
-    public void setContaSaidaCollection(Collection<ContaSaida> contaSaidaCollection) {
-        this.contaSaidaCollection = contaSaidaCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -184,5 +168,5 @@ public class Conta implements Serializable {
     public String toString() {
         return "br.com.lgrapp.banco.model.Conta[ idConta=" + idConta + " ]";
     }
-    
+
 }

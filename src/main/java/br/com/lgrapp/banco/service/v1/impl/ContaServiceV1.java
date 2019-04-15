@@ -24,7 +24,7 @@ public class ContaServiceV1 extends AbstractService<Conta> implements IContaServ
 
     @Inject
     @Named("ContaDAOV1")
-    IContaDAOV1 contaDAOV1;
+    private IContaDAOV1 contaDAOV1;
 
     @Override
     public IContaDAOV1 getCrud() {

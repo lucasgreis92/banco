@@ -16,7 +16,6 @@ import javax.inject.Named;
  * @author adm
  */
 @Stateless
-@Named("AgenciaMapperV1")
 public class AgenciaMapperV1 extends AbstractMapper<Agencia, AgenciaDTOV1> {
 
     @Override

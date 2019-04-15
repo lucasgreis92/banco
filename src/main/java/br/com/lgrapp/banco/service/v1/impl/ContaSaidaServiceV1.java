@@ -5,10 +5,30 @@
  */
 package br.com.lgrapp.banco.service.v1.impl;
 
+
+import br.com.lgrapp.banco.dao.v1.custom.IContaSaidaDAOV1;
+import br.com.lgrapp.banco.model.ContaSaida;
+import br.com.lgrapp.banco.service.AbstractService;
+import br.com.lgrapp.banco.service.v1.custom.IContaSaidaServiceV1;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.inject.Named;
+
 /**
  *
  * @author adm
  */
-public class ContaSaidaServiceV1 {
-    
+@Stateless
+@Named("ContaSaidaServiceV1")
+public class ContaSaidaServiceV1 extends AbstractService<ContaSaida> implements IContaSaidaServiceV1 {
+
+    @Inject
+    @Named("ContaSaidaDAOV1")
+    private IContaSaidaDAOV1 contaSaidaDAOV1;
+
+    @Override
+    public IContaSaidaDAOV1 getCrud() {
+        return contaSaidaDAOV1;
+    }
+
 }

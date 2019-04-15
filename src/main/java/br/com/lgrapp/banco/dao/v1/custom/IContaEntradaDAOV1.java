@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.lgrapp.banco.dto;
+package br.com.lgrapp.banco.dao.v1.custom;
 
-import br.com.lgrapp.banco.base.crud.AbstractEntity;
+import br.com.lgrapp.banco.base.crud.interfaces.ICrud;
+import br.com.lgrapp.banco.model.ContaEntrada;
 
 /**
  *
  * @author adm
  */
-public abstract class AbstractDTO<T> extends AbstractEntity<T> {
+public interface IContaEntradaDAOV1 extends ICrud<ContaEntrada>{
     
 }

@@ -34,6 +34,10 @@ public class ApplicationConfig extends Application {
         resources.add(br.com.lgrapp.banco.base.exception.ConsistenceExceptionMapper.class);
         resources.add(br.com.lgrapp.banco.controller.v1.AgenciaControllerV1.class);
         resources.add(br.com.lgrapp.banco.controller.v1.ContaControllerV1.class);
+        resources.add(br.com.lgrapp.banco.controller.v1.ContaEntradaControllerV1.class);
+        resources.add(br.com.lgrapp.banco.controller.v1.ContaSaidaControllerV1.class);
+        resources.add(br.com.lgrapp.banco.controller.v1.PessoaFisicaControllerV1.class);
+        resources.add(br.com.lgrapp.banco.controller.v1.PessoaJuridicaControllerV1.class);
     }
     
 }

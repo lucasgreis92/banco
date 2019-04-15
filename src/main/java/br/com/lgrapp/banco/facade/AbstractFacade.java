@@ -5,6 +5,7 @@
  */
 package br.com.lgrapp.banco.facade;
 
+import br.com.lgrapp.banco.base.crud.AbstractEntity;
 import br.com.lgrapp.banco.base.crud.interfaces.ICrud;
 import br.com.lgrapp.banco.dto.AbstractDTO;
 import br.com.lgrapp.banco.mappers.AbstractMapper;
@@ -14,7 +15,7 @@ import java.util.List;
  *
  * @author adm
  */
-public abstract class AbstractFacade<T, S extends AbstractDTO> {
+public abstract class AbstractFacade<T extends AbstractEntity, S extends AbstractDTO> {
 
     public void create(S dto) {
         getCrud().create(getMapper().convertToModel(null, dto));
@@ -22,6 +23,14 @@ public abstract class AbstractFacade<T, S extends AbstractDTO> {
 
     public void edit(S dto) {
         getCrud().edit(getMapper().convertToModel(null, dto));
+    }
+
+    public void save(S dto) {
+        getCrud().save(getMapper().convertToModel(null, dto));
+    }
+
+    public void save(T entity, S dto) {
+        getCrud().save(getMapper().convertToModel(entity, dto));
     }
 
     public void remove(Object id) {

@@ -5,6 +5,7 @@
  */
 package br.com.lgrapp.banco.model;
 
+import br.com.lgrapp.banco.base.crud.AbstractEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -38,7 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "PessoaJuridica.findByDsCnpj", query = "SELECT p FROM PessoaJuridica p WHERE p.dsCnpj = :dsCnpj")
     , @NamedQuery(name = "PessoaJuridica.findByDsTelefone", query = "SELECT p FROM PessoaJuridica p WHERE p.dsTelefone = :dsTelefone")
     , @NamedQuery(name = "PessoaJuridica.findByDsEmail", query = "SELECT p FROM PessoaJuridica p WHERE p.dsEmail = :dsEmail")})
-public class PessoaJuridica implements Serializable {
+public class PessoaJuridica extends AbstractEntity<Integer> implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -65,8 +66,6 @@ public class PessoaJuridica implements Serializable {
     @Size(max = 255)
     @Column(name = "ds_email")
     private String dsEmail;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPessoaJuridica")
-    private Collection<Conta> contaCollection;
 
     public PessoaJuridica() {
     }
@@ -79,6 +78,11 @@ public class PessoaJuridica implements Serializable {
         this.idPessoaJuridica = idPessoaJuridica;
         this.dsRazaoSocial = dsRazaoSocial;
         this.dsCnpj = dsCnpj;
+    }
+
+    @Override
+    public Integer getId() {
+        return idPessoaJuridica;
     }
 
     public Integer getIdPessoaJuridica() {
@@ -129,15 +133,6 @@ public class PessoaJuridica implements Serializable {
         this.dsEmail = dsEmail;
     }
 
-    @XmlTransient
-    public Collection<Conta> getContaCollection() {
-        return contaCollection;
-    }
-
-    public void setContaCollection(Collection<Conta> contaCollection) {
-        this.contaCollection = contaCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -162,5 +157,5 @@ public class PessoaJuridica implements Serializable {
     public String toString() {
         return "br.com.lgrapp.banco.model.PessoaJuridica[ idPessoaJuridica=" + idPessoaJuridica + " ]";
     }
-    
+
 }

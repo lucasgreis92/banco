@@ -11,10 +11,15 @@ import br.com.lgrapp.banco.dto.AbstractDTO;
  *
  * @author adm
  */
-public class AgenciaDTOV1 extends AbstractDTO{
+public class AgenciaDTOV1 extends AbstractDTO<Integer>{
 
     private Integer idAgencia;
     private String dsAgencia;
+
+    @Override
+    public Integer getId() {
+        return idAgencia;
+    }
 
     public Integer getIdAgencia() {
         return idAgencia;

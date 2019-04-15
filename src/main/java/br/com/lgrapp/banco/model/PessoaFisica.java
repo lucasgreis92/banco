@@ -5,6 +5,7 @@
  */
 package br.com.lgrapp.banco.model;
 
+import br.com.lgrapp.banco.base.crud.AbstractEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -40,7 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "PessoaFisica.findByDsCpf", query = "SELECT p FROM PessoaFisica p WHERE p.dsCpf = :dsCpf")
     , @NamedQuery(name = "PessoaFisica.findByDsEmail", query = "SELECT p FROM PessoaFisica p WHERE p.dsEmail = :dsEmail")
     , @NamedQuery(name = "PessoaFisica.findByDsTelefone", query = "SELECT p FROM PessoaFisica p WHERE p.dsTelefone = :dsTelefone")})
-public class PessoaFisica implements Serializable {
+public class PessoaFisica extends AbstractEntity<Integer> implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -67,8 +68,6 @@ public class PessoaFisica implements Serializable {
     @Size(max = 50)
     @Column(name = "ds_telefone")
     private String dsTelefone;
-    @OneToMany(mappedBy = "idPessoaFisica")
-    private Collection<Conta> contaCollection;
 
     public PessoaFisica() {
     }
@@ -81,6 +80,11 @@ public class PessoaFisica implements Serializable {
         this.idPessoaFisica = idPessoaFisica;
         this.dsNome = dsNome;
         this.dsCpf = dsCpf;
+    }
+
+    @Override
+    public Integer getId() {
+        return idPessoaFisica;
     }
 
     public Integer getIdPessoaFisica() {
@@ -131,15 +135,6 @@ public class PessoaFisica implements Serializable {
         this.dsTelefone = dsTelefone;
     }
 
-    @XmlTransient
-    public Collection<Conta> getContaCollection() {
-        return contaCollection;
-    }
-
-    public void setContaCollection(Collection<Conta> contaCollection) {
-        this.contaCollection = contaCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -164,5 +159,5 @@ public class PessoaFisica implements Serializable {
     public String toString() {
         return "br.com.lgrapp.banco.model.PessoaFisica[ idPessoaFisica=" + idPessoaFisica + " ]";
     }
-    
+
 }
