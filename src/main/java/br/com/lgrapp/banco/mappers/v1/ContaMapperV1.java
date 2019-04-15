@@ -43,6 +43,7 @@ public class ContaMapperV1 extends AbstractMapper<Conta, ContaDTOV1> {
         dto.setIdAgencia(model.getIdAgencia().getIdAgencia());
         dto.setDsAgencia(model.getIdAgencia().getDsAgencia());
         dto.setVrSaldo(model.getVrSaldo());
+        dto.setDtAbertura(model.getDtAbertura());
         if (model.getIdPessoaFisica() != null) {
             dto.setDsCpfCnpj(model.getIdPessoaFisica().getDsCpf());
             dto.setDsPessoa(model.getIdPessoaFisica().getDsCpf());

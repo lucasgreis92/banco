@@ -7,6 +7,7 @@ package br.com.lgrapp.banco.facade.v1.custom;
 
 import br.com.lgrapp.banco.base.crud.interfaces.ICrud;
 import br.com.lgrapp.banco.dto.v1.ContaDTOV1;
+import java.util.List;
 
 /**
  *
@@ -17,4 +18,7 @@ public interface IContaFacadeV1 extends ICrud<ContaDTOV1> {
     void savePessoaFisica(ContaDTOV1 dto);
 
     void savePessoaJuridica(ContaDTOV1 dto);
+
+    List<ContaDTOV1> findByDsPessoa(String dsPessoa);
+    
 }

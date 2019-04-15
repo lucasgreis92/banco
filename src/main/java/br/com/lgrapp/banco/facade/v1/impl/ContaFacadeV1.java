@@ -12,7 +12,9 @@ import br.com.lgrapp.banco.facade.v1.custom.IContaFacadeV1;
 import br.com.lgrapp.banco.mappers.v1.ContaMapperV1;
 import br.com.lgrapp.banco.model.Conta;
 import br.com.lgrapp.banco.service.v1.custom.IContaServiceV1;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -59,6 +61,16 @@ public class ContaFacadeV1 extends AbstractFacade<Conta, ContaDTOV1> implements 
     public void savePessoaJuridica(ContaDTOV1 dto) {
         dto.setTipoPessoa(TipoPessoaEnum.PESSOA_JURIDICA);
         super.save(dto);
+    }
+
+    @Override
+    public List<ContaDTOV1> findByDsPessoa(String dsPessoa) {
+        List<Conta> contas = contaServiceV1.findByDsPessoa(dsPessoa);
+        List<ContaDTOV1> dtoList = new ArrayList<>();
+        for (Conta conta : contas) {
+            dtoList.add(getMapper().convertToDto(conta));
+        }
+        return dtoList;
     }
 
 }

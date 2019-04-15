@@ -7,6 +7,7 @@ package br.com.lgrapp.banco.controller.v1;
 
 import br.com.lgrapp.banco.dto.v1.ContaDTOV1;
 import br.com.lgrapp.banco.facade.v1.custom.IContaFacadeV1;
+import br.com.lgrapp.banco.model.Conta;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,6 +16,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -34,6 +36,12 @@ public class ContaControllerV1 {
     @GET
     public List<ContaDTOV1> findAll() {
         return contaFacadeV1.findAll();
+    }
+    
+    @GET
+    @Path("{dsPessoa}")
+    public List<ContaDTOV1> findByDsPessoa(@PathParam("dsPessoa") String dsPessoa){
+        return contaFacadeV1.findByDsPessoa(dsPessoa);
     }
 
     @POST

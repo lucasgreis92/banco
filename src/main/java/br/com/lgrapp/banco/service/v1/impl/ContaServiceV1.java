@@ -7,9 +7,11 @@ package br.com.lgrapp.banco.service.v1.impl;
 
 
 import br.com.lgrapp.banco.dao.v1.custom.IContaDAOV1;
+import br.com.lgrapp.banco.dto.v1.ContaDTOV1;
 import br.com.lgrapp.banco.model.Conta;
 import br.com.lgrapp.banco.service.AbstractService;
 import br.com.lgrapp.banco.service.v1.custom.IContaServiceV1;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -29,5 +31,10 @@ public class ContaServiceV1 extends AbstractService<Conta> implements IContaServ
     @Override
     public IContaDAOV1 getCrud() {
         return contaDAOV1;
+    }
+
+    @Override
+    public List<Conta> findByDsPessoa(String dsPessoa) {
+        return contaDAOV1.findByDsPessoa(dsPessoa);
     }
 }
