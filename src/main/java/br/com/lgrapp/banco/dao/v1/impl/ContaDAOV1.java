@@ -35,4 +35,12 @@ public class ContaDAOV1 extends AbstractDAO<Conta> implements IContaDAOV1 {
         return query.getResultList();
     }
 
+    @Override
+    public Conta find(Object id) {
+        Query query = getEntityManager().createNamedQuery("Conta.findByIdConta");
+        query.setParameter("idConta", id);
+        return (Conta)query.getSingleResult();
+    }
+    
+
 }

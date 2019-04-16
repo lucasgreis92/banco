@@ -34,9 +34,9 @@ public class ContaEntradaMapperV1 extends AbstractMapper<ContaEntrada, ContaEntr
         if (model == null) {
             model = new ContaEntrada();
         }
+        model.setIdConta(contaServiceV1.find(dto.getIdConta()));
         model.setIdContaEntrada(dto.getIdContaEntrada());
         model.setVrOperacao(dto.getVrOperacao());
-        model.setIdConta(contaServiceV1.find(dto.getIdConta()));
         return model;
     }
 

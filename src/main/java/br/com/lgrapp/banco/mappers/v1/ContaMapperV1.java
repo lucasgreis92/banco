@@ -40,13 +40,14 @@ public class ContaMapperV1 extends AbstractMapper<Conta, ContaDTOV1> {
     @Override
     public ContaDTOV1 convertToDto(Conta model) {
         ContaDTOV1 dto = new ContaDTOV1();
+        dto.setIdConta(model.getIdConta());
         dto.setIdAgencia(model.getIdAgencia().getIdAgencia());
         dto.setDsAgencia(model.getIdAgencia().getDsAgencia());
         dto.setVrSaldo(model.getVrSaldo());
         dto.setDtAbertura(model.getDtAbertura());
         if (model.getIdPessoaFisica() != null) {
             dto.setDsCpfCnpj(model.getIdPessoaFisica().getDsCpf());
-            dto.setDsPessoa(model.getIdPessoaFisica().getDsCpf());
+            dto.setDsPessoa(model.getIdPessoaFisica().getDsNome());
             dto.setIdPessoa(model.getIdPessoaFisica().getIdPessoaFisica());
             dto.setTipoPessoa(TipoPessoaEnum.PESSOA_FISICA);
         } else if (model.getIdPessoaJuridica() != null) {

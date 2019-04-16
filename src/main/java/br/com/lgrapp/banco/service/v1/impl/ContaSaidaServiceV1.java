@@ -11,6 +11,8 @@ import br.com.lgrapp.banco.model.ContaSaida;
 import br.com.lgrapp.banco.service.AbstractService;
 import br.com.lgrapp.banco.service.v1.custom.IContaSaidaServiceV1;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 import javax.inject.Named;
 
